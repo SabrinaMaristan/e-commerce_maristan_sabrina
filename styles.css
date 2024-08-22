@@ -1,0 +1,16 @@
+/* Sabrina Maristan */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% auto; /* Centrar horizontalmente el contenedor principal */
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    align-content: space-between;
+    margin: 2%;
+}
