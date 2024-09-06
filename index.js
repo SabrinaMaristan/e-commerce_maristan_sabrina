@@ -1,15 +1,23 @@
 // console.log(" Holaa!");
 
-const h5 = document.querySelector(".card-title"); //.card-title: como en el CSS.
-h5.innerText = "Kiki's Delivery Service";
+const h1 = document.querySelector(
+    ".titulo");
+h1.innerText = "Productos";
 
-const p = document.querySelector(".card-text");
-p.innerText = "(1989)";
+const container = document.querySelector('.container');
 
-const img = document.querySelector(".card-img-top");
-img.src = "https://cinemaetceteracom.wordpress.com/wp-content/uploads/2020/04/fsbimnuxj6rrsuf3mn7pfqutws4.jpg?w=1024";
+const cardsArray = [];
+const totalCards = 9; 
 
-
-// Ponyo (2008), 
-// The Secret World of Arrietty (2010), https://images.amcnetworks.com/ifccenter.com/wp-content/uploads/2019/12/the-secret-world-of-arrietty_592x299-7.jpg
-// My Neighbor Totoro (1988), https://www.nippon.com/en/ncommon/contents/japan-data/2034215/2034215.jpg
+for (let i = 1; i <= totalCards; i++) {
+    const card = `
+        <div class="card">
+            <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" alt="Producto ${i}">
+            <h3>Producto ${i}</h3>
+            <p>Descripción del producto ${i}.</p>
+        </div>
+    `;
+    cardsArray.push(card);
+    document.querySelector(".container").innerHTML = cardsArray.join(''); 
+    // container.innerHTML = cardsArray.join('');
+}        
