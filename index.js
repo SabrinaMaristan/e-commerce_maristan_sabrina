@@ -17,6 +17,7 @@ for (let i = 1; i <= totalCards; i++) {
         </div>
     `;
     cardsArray.push(card);
-    document.querySelector(".container").innerHTML = cardsArray.join(''); 
-    // container.innerHTML = cardsArray.join('');
 }        
+
+document.querySelector(".container").innerHTML = cardsArray.join(''); 
+// container.innerHTML = cardsArray.join('');
