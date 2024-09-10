@@ -1,3 +1,4 @@
+//document.querySelector("h1").innerHTML = "Productos";
 const h1 = document.querySelector(".titulo");
 h1.innerText = "Productos";
 
