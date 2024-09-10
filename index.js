@@ -1,12 +1,12 @@
-// console.log(" Holaa!");
-
 const h1 = document.querySelector(".titulo");
 h1.innerText = "Productos";
 
 const container = document.querySelector('.container');
 
-const cardsArray = [];
-const totalCards = 9; 
+const cardsArray = []; // Declara un arreglo vacío que almacenará las tarjetas en formato de cadena HTML.
+const totalCards = 9; // Variable totalCards con el valor que indica cuántas tarjetas de productos se van a crear.
+
+// Inicia un bucle for que va desde 1 hasta 9, es decir, se ejecutará 9 veces para crear una tarjeta por cada número. Dentro del bucle, en cada iteración, se genera una cadena HTML que representa una tarjeta de producto. La variable i se utiliza para cambiar dinámicamente el número de la imagen, el título (Producto ${i}) y la descripción.
 
 for (let i = 1; i <= totalCards; i++) {
     const card = `
@@ -16,8 +16,8 @@ for (let i = 1; i <= totalCards; i++) {
             <p>Descripción del producto ${i}.</p>
         </div>
     `;
-    cardsArray.push(card);
+    cardsArray.push(card); //Añade la tarjeta generada en cada iteración (card) al arreglo cardsArray.
 }        
 
 document.querySelector(".container").innerHTML = cardsArray.join(''); 
-// container.innerHTML = cardsArray.join('');
+// Selecciona el contenedor con la clase "container" y reemplaza su contenido con las tarjetas que se almacenaron en cardsArray. join('') convierte el arreglo en una única cadena HTML sin comas separadoras.
