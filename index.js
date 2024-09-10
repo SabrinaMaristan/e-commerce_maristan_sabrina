@@ -1,5 +1,5 @@
 //document.querySelector("h1").innerHTML = "Productos";
-const h1 = document.querySelector(".titulo");
+const h1 = document.querySelector("h1");
 h1.innerText = "Productos";
 
 const container = document.querySelector('.container');
@@ -18,7 +18,7 @@ for (let i = 1; i <= totalCards; i++) {
         </div>
     `;
     cardsArray.push(card); //Añade la tarjeta generada en cada iteración (card) al arreglo cardsArray.
-}        
-
+}  
+         
 document.querySelector(".container").innerHTML = cardsArray.join(''); 
 // Selecciona el contenedor con la clase "container" y reemplaza su contenido con las tarjetas que se almacenaron en cardsArray. join('') convierte el arreglo en una única cadena HTML sin comas separadoras.
