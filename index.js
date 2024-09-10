@@ -1,7 +1,6 @@
 // console.log(" Holaa!");
 
-const h1 = document.querySelector(
-    ".titulo");
+const h1 = document.querySelector(".titulo");
 h1.innerText = "Productos";
 
 const container = document.querySelector('.container');
