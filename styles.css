@@ -1,16 +1,19 @@
 /* Sabrina Maristan */
 
 .card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline; /* Usar flexbox para alinear en fila */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
     margin: 5% auto; /* Centrar horizontalmente el contenedor principal */
+    background-color: aquamarine;
 }
 
 .card {
-    display: flex;
-    justify-content: center;
+    display: flex; /* Mantiene el contenido de la tarjeta en flexbox */
+    flex-direction: column; /* Alinea el contenido de la tarjeta en columna */
+    justify-content: center; /* Centra el contenido verticalmente */
     background-color: bisque;
-    align-content: space-between;
     margin: 2%;
+    width: 500px; /* Ancho fijo para las tarjetas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
 }

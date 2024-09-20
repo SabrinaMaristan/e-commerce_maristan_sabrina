@@ -18,7 +18,7 @@ function cards() {
                 <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${i}.jpg" alt="Producto ${i}">
                 <h3> Producto ${i}</h3>
                 <p> Descripción del producto ${i}.</p>
-                <button> Ver más </button> 
+                <a href="producto.html?productId=${i}"> Ver más </a> 
             </div>
         `;
         cardsArray.push(card); //Añade la tarjeta generada en cada iteración (card) al arreglo cardsArray.
@@ -30,3 +30,7 @@ function cards() {
 }
 
 cards();
+
+/* 17-19 / 09
+<button> Ver más </button> Cambia a: <a href="producto.html?productId=${i}"> Ver más </a> para para redirigir a producto.html
+*/
