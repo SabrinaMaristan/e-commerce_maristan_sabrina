@@ -1,6 +1,6 @@
 // 19.09
 
-// Crear la clase Producto
+// Definir una clase Producto con sus propiedades
 class Producto {
     constructor(titulo, detalle, precio, stock, imagen) {
         this.titulo = titulo;
@@ -22,43 +22,29 @@ const producto = {
 }; */
 
 // Crear instancias de la clase Producto
-const productos = [
-    new Producto("Producto 1", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg"),
-
-    new Producto("Producto 2", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/2.jpg"),
-
-    new Producto("Producto 3", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/3.jpg"),
-
-    new Producto("Producto 4", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/4.jpg"),
-
-    new Producto("Producto 5", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/5.jpg"),
-
-    new Producto("Producto 6", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/6.jpg"),
-
-    new Producto("Producto 7", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/7.jpg"),
-
-    new Producto("Producto 8", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/8.jpg"),
-
-    new Producto("Producto 9", "BMW Azul", 29000.0, 6, "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/9.jpg")
-];
 
 
-// Inicializar una variable para almacenar las etiquetas HTML que incluyen las propiedades del objeto
-let etiquetas = "";
+// Crear una instancia del producto con valores predeterminados
+const producto = new Producto(
+    "Producto 1",  // Título
+    "Este es el detalle del producto 1.",  // Descripción
+    "$100",  // Precio
+    20,  // Stock
+    "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg"  // Imagen
+);
 
-// Usar un bucle for para crear las tarjetas
-for (let i = 0; i < productos.length; i++) {
-    const producto = productos[i];
-    etiquetas += `
-        <div class="card">
-            <img src="${producto.imagen}" alt="${producto.titulo}">
-            <h2>${producto.titulo}</h2>
-            <p>${producto.detalle}</p>
-            <p>Precio: $${producto.precio}</p>
-            <p>Stock: ${producto.stock}</p>
-        </div>
-    `;
-}
+// Crear una plantilla HTML con las propiedades del producto
+const etiquetas = `
+<div class="card">
+    <img src="${producto.imagen}" class="card-img-top" alt="${producto.titulo}">
+    <div class="card-body">
+        <h5 class="card-title">${producto.titulo}</h5>
+        <p class="card-text">${producto.detalle}</p>
+        <p class="card-text">Precio: ${producto.precio}</p>
+        <p class="card-text">Stock: ${producto.stock}</p>
+    </div>
+</div>
+`;
 
-// Insertar el contenido en el main de producto.html
+// Insertar la plantilla generada dentro del main en producto.html
 document.querySelector('main').innerHTML = etiquetas;
