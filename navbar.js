@@ -19,7 +19,6 @@ let menuItems = [];
 
 // Recorrer el array de categorías y generar el HTML para cada una
 for (let item of categorias) {
-    // Agregar cada item del menú al array menuItems
     menuItems.push(`
         <li class="nav-item">
             <a class="nav-link" href="${item.href}">${item.nombre}</a>
@@ -27,13 +26,13 @@ for (let item of categorias) {
     `);
 }
 
-// Crear la estructura del navbar incluyendo los items generados
+// Crear la estructura del navbar
 let menu = `
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Tienda</a>
         <ul class="navbar-nav">
-            ${menuItems.join('')}  <!-- Aquí se insertan las categorías generadas -->
+            ${menuItems.join('')}
         </ul>
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">

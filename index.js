@@ -18,8 +18,8 @@ function cards() {
             <div class="card-body">
                 <h5 class="card-title">Producto ${i}</h5>
                 <p class="card-text">Descripción del Producto ${i}</p>
-                <!-- Botón que redirige a producto.html -->
-                <a href="producto.html" class="btn btn-primary">Ver más</a>
+                <!-- Botón que redirige a producto.html con el ID del producto -->
+                <a href="producto.html?prod=${i}" class="btn btn-primary">Ver más</a>
             </div>
         </div>
         `;
@@ -33,7 +33,3 @@ function cards() {
 
 // Llamar a la función para generar las cards al cargar la página
 cards();
-
-/* 17-19 / 09
-<button> Ver más </button> Cambia a: <a href="producto.html?productId=${i}"> Ver más </a> para para redirigir a producto.html
-*/
