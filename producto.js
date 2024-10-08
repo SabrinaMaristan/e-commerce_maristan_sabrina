@@ -8,72 +8,56 @@ const data = [
       precio: 199.99,
       stock: 10,
       imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg"
-    },
-    // 2
-    {
+    }, {
       id: 2,
       titulo: "Producto 2",
       detalle: "Descripción del producto 2.",
       precio: 299.99,
       stock: 5,
       imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/2.jpg"
-    },
-    // 3
-    {
+    }, {
         id: 3,
         titulo: "Producto 3",
         detalle: "Descripción del producto 3.",
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/3.jpg"
-    },
-    // 4
-    {
+    }, {
         id: 4,
         titulo: "Producto 4",
         detalle: "Descripción del producto 4.",
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/4.jpg"
-    },
-    // 5
-    {
+    }, {
         id: 5,
         titulo: "Producto 5",
         detalle: "Descripción del producto 5.",
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/5.jpg"
-    },
-    // 6
-    {
+    }, {
         id: 6,
         titulo: "Producto 6",
         detalle: "Descripción del producto 6.",
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/6.jpg"
-    },
-    // 7
-    {
+    }, {
         id: 7,
         titulo: "Producto 7",
         detalle: "Descripción del producto 7.",
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/7.jpg"
-    },
-    // 8
-    {
+    }, {
         id: 8,
         titulo: "Producto 8",
         detalle: "Descripción del producto 8.",
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/8.jpg"
-    },
-    // 9
-    {
+    }, {
         id: 9,
         titulo: "Producto 9",
         detalle: "Descripción del producto 9.",
@@ -109,4 +93,3 @@ const data = [
     // Si no se encuentra el producto, mostrar un mensaje
     document.querySelector('main').innerHTML = '<p>Producto no encontrado</p>';
   }
-  
