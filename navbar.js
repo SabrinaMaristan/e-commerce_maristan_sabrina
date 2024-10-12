@@ -26,7 +26,7 @@ for (let item of categorias) {
     `);
 }
 
-// Crear la estructura del navbar
+// Crear la estructura del navbar sin el buscador
 let menu = `
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -38,12 +38,6 @@ let menu = `
             <ul class="navbar-nav">
                 ${menuItems.join('')}
             </ul>
-            <form class="d-flex ms-auto" role="search">
-                <!-- Aquí se asigna la clase "input" al campo de búsqueda -->
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input">
-                <!-- Cambiar type a "button" para evitar el envío del formulario -->
-                <button class="btn btn-outline-success" type="button" id="search-button">Buscar</button>
-            </form>
         </div>
     </div>
 </nav>
@@ -51,10 +45,3 @@ let menu = `
 
 // Insertar el menú en el DOM
 document.querySelector('header').innerHTML = menu;
-
-// Agregar evento para la búsqueda
-document.getElementById('search-button').addEventListener('click', function() {
-    const query = document.getElementById('search-input').value.toLowerCase();
-    // Redirigir a la página de búsqueda (puedes implementar lógica de búsqueda aquí)
-    alert(`Buscando: ${query}`);
-});

@@ -12,15 +12,15 @@
 <body>
     <header></header>
 
-    <main>
-        <div class="container">
-            <h1>Productos</h1>
-            <div class="search-container">
-                <input id="search-input" type="text" placeholder="Buscar producto...">
-                <button id="search-button">Buscar</button>
-                <button id="clear-button">Limpiar</button>
-            </div>
-            <div id="product-list" class="row"></div>
+    <main class="container mt-4">
+        <form class="d-flex ms-auto" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input">
+            <button class="btn btn-outline-success" type="button" id="search-button">Buscar</button>
+            <button class="btn btn-outline-danger" type="button" id="clear-button">Limpiar</button>
+        </form>
+    
+        <div class="row mt-4" id="product-list">
+            <!-- Los productos se agregarán aquí -->
         </div>
     </main>
 
