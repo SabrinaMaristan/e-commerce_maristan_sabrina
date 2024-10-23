@@ -54,7 +54,7 @@ function displayProducts(products) {
   };
   
   // Eventos para los botones de categoría
-  const categoryButtons = document.querySelectorAll(".category-btn"); // Cambiar a un selector correcto
+  const categoryButtons = document.querySelectorAll(".category-btn"); 
   categoryButtons.forEach(button => {
       button.addEventListener("click", () => filterByCategory(button.dataset.category)); // Asegúrate que dataset.category exista
   });
