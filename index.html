@@ -3,30 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce</title>
+    <title>E-commerce - TIENDA</title>
 
     <!-- Bootstrap CSS para estilos -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">   -->
 </head>
 <body>
-    <header></header>
 
-    <main class="container mt-4">
-        <form class="d-flex ms-auto" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input">
-            <button class="btn btn-outline-success" type="button" id="search-button">Buscar</button>
-            <button class="btn btn-outline-danger" type="button" id="clear-button">Limpiar</button>
-        </form>
-    
-        <div class="row mt-4" id="product-list">
-            <!-- Los productos se agregarán aquí -->
-        </div>
-    </main>
+<header>
+    <!-- Aquí se insertará el navbar dinámicamente -->
+</header>
+
+<main class="container my-4">
+
+    <form class="d-flex ms-auto" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input">
+        <button class="btn btn-outline-success" type="button" id="search-button">Buscar</button>
+        <button class="btn btn-outline-danger" type="button" id="clear-button">Limpiar</button>
+    </form>
+
+    <br>
+
+    <!-- Botones de filtro por categoría -->
+    <div id="category-buttons" class="mb-3">
+        <button class="category-btn btn btn-primary me-2" data-category="todos">Ver todos</button>
+        <button class="category-btn btn btn-primary me-2" data-category="mclaren">McLaren</button>
+        <button class="category-btn btn btn-primary me-2" data-category="mercedes">Mercedes</button>
+        <button class="category-btn btn btn-primary me-2" data-category="ferrari">Ferrari</button>
+    </div>
+
+    <!-- Contenedor para los productos -->
+    <div class="row mt-4" id="product-list">
+        <!-- Los productos se renderizarán aquí -->
+    </div>
+</main>
 
     <!-- Scripts JS -->
+    <script src="data.js"></script>
     <script src="navbar.js"></script>
     <script src="index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
