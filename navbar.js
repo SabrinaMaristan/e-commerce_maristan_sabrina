@@ -7,10 +7,6 @@ let categorias = [
     {
         nombre: "Productos",
         href: "./producto.html"
-    },
-    {
-        nombre: "Inicio Sesión",
-        href: "./login.html"
     }
 ];
 
@@ -38,6 +34,9 @@ let menu = `
             <ul class="navbar-nav">
                 ${menuItems.join('')}
             </ul>
+            <ul class="navbar-nav session"> ${ localStorage.getItem("email") ? `<span>${localStorage.getItem("email")}</span>  |  <span onclick="logout()"> Cerrar sesión </span>` : "<a href= './login.html'><span> Iniciar sesión</span></a>"
+            }
+                </ul>
         </div>
     </div>
 </nav>
@@ -45,3 +44,8 @@ let menu = `
 
 // Insertar el menú en el DOM
 document.querySelector('header').innerHTML = menu;
+
+function logout() {
+    localStorage.clear();
+    location.href = "./index.html";
+}
