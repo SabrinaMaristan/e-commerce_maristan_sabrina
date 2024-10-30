@@ -1,4 +1,4 @@
-// Array con las categorías de la tienda, cada una con un nombre y un enlace (href)
+// Definición de las categorías del menú de navegación
 let categorias = [
     {
         nombre: "Inicio",
@@ -10,10 +10,10 @@ let categorias = [
     }
 ];
 
-// Array para almacenar el HTML del menú generado
+// Array para almacenar los elementos de navegación generados dinámicamente
 let menuItems = [];
 
-// Recorrer el array de categorías y generar el HTML para cada una
+// Generación de los elementos de navegación en base a las categorías
 for (let item of categorias) {
     menuItems.push(`
         <li class="nav-item">
@@ -22,11 +22,11 @@ for (let item of categorias) {
     `);
 }
 
-// Crear la estructura del navbar
+// Estructura del menú de navegación
 let menu = `
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="./index.html">                   Tienda                   </a>
+        <a class="navbar-brand" href="./index.html">Tienda</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,18 +34,28 @@ let menu = `
             <ul class="navbar-nav">
                 ${menuItems.join('')}
             </ul>
-            <ul class="navbar-nav session"> ${ localStorage.getItem("email") ? `<span>${localStorage.getItem("email")}</span>  |  <span onclick="logout()"> Cerrar sesión </span>` : "<a href= './login.html'><span> Iniciar sesión</span></a>"
-            }
-                </ul>
+            <!-- Opciones de usuario en función del estado de sesión -->
+            <ul class="navbar-nav session"> 
+                ${localStorage.getItem("email") 
+                    ? `<span>${localStorage.getItem("email")}</span> 
+                        <span> | </span>
+                        <li><img height="25" src="IMG-DESCARGAR" alt="Carrito"> 
+                        <b id="quantity">${localStorage.getItem("quantity")}</b></li>
+                        <span> | </span> 
+                        <span onclick="logout()">Cerrar sesión</span>` 
+                    : "<a href='./login.html'><span>Iniciar sesión</span></a>"
+                }
+            </ul>
         </div>
     </div>
 </nav>
 `;
 
-// Insertar el menú en el DOM
+// Inserta el menú en el elemento <header> del HTML
 document.querySelector('header').innerHTML = menu;
 
+// Función para cerrar sesión
 function logout() {
-    localStorage.clear();
-    location.href = "./index.html";
+    localStorage.clear();  // Limpia el almacenamiento local
+    location.href = "./index.html";  // Redirecciona a la página principal
 }

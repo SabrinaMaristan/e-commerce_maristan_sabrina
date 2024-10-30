@@ -11,6 +11,7 @@ function displayProducts(products) {
                         <h5 class="card-title">${product.titulo}</h5>
                         <p class="card-text">${product.detalle}</p>
                         <p>Precio: $${product.precio.toFixed(2)}</p>
+                        <p>Stock: ${product.stock}</p>
                         <a href="./producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
@@ -56,6 +57,6 @@ function displayProducts(products) {
   // Eventos para los botones de categoría
   const categoryButtons = document.querySelectorAll(".category-btn"); 
   categoryButtons.forEach(button => {
-      button.addEventListener("click", () => filterByCategory(button.dataset.category)); // Asegúrate que dataset.category exista
+      button.addEventListener("click", () => filterByCategory(button.dataset.category)); 
   });
   
