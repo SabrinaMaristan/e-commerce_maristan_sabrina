@@ -45,6 +45,54 @@ if (!isNaN(prodId)) {
     mostrarDetalleProducto(prodId);
 }
 
+// Cart funcitons
+const counter = document.querySelector("#counter");
+
+function increaseItem() {
+    const idProduct = Number(window.location.search.split("=")[1]);
+    
+    const product = data.find(item => item.id === idProduct);
+
+    if (product.stock > counter.value) {
+        counter.value = Number(counter.value) + 1;
+    }
+}
+
+function decreaseItem() {
+    if (1 < counter.value) {
+        counter.value = Number(counter.value) - 1;
+    }
+}
+
+function addItems() {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
+    const idProduct = Number(window.location.search.split("=")[1]);
+    const product = data.find(item => item.id === idProduct);
+    const existeIdCart = cart.some(item => item.product.id === idProduct); // some: true - false
+
+    if (existeIdCart) {
+        cart = cart.map(item => {
+            if (item.product.id === idProduct) {
+                return { item, quantity: item.quantity + Number(counter.value) }
+            } else {
+                return item;
+            }
+        })
+    } else {
+        cart.push({ product: product, quantity: Number(counter.value) });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    let quantity = cart.reduce((acumulado, actual) => acumulado + actual.quantity, 0);
+    localStorage.setItem("quantity", quantity);
+    const quantityTag = document.querySelector("#quantity");
+    quantityTag.innerText = quantity;
+    counter.value = "1";
+}
+
+
+/*
 // Función para incrementar el contador hasta el máximo del stock
 function increaseItem(stock) {
     const counter = document.querySelector("#counter");
@@ -103,4 +151,4 @@ function addItems(idProduct) {
 
     // Actualiza el stock visualmente en la página
     mostrarDetalleProducto(idProduct);
-}
+}*/
