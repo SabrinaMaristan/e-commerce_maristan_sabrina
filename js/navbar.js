@@ -26,7 +26,7 @@ for (let item of categorias) {
 let menu = `
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="./index.html">Tienda</a>
+        <a class="navbar-brand" href="./index.html">           Tienda          </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,11 +39,11 @@ let menu = `
                 ${localStorage.getItem("email") 
                     ? `<span>${localStorage.getItem("email")}</span> 
                         <span> | </span>
-                        <li><img height="25" src="IMG-DESCARGAR" alt="Carrito"> 
-                        <b id="quantity">${localStorage.getItem("quantity")}</b></li>
+                        <li>  <a href="cart.html"> <img height="25" src="cart_img.png" alt="Carrito"> </a> 
+                        <b id="quantity">${localStorage.getItem("quantity")}</b> </li>
                         <span> | </span> 
-                        <span onclick="logout()">Cerrar sesión</span>` 
-                    : "<a href='./login.html'><span>Iniciar sesión</span></a>"
+                        <span onclick="logout()">       Cerrar sesión   </span>` 
+                    : "<a href='./login.html'><span>    Iniciar sesión  </span> </a>"
                 }
             </ul>
         </div>

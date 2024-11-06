@@ -1,3 +1,20 @@
+// Función para mostrar todos los productos si no se encuentra uno específico
+function mostrarProductos() {
+    const productDetail = document.querySelector('#product-detail');
+    
+    productDetail.innerHTML = data.map(product => `
+        <div class="product-card">
+            <h3>${product.titulo}</h3>
+            <img src="${product.imagen}" alt="${product.titulo}">
+            <p>${product.detalle}</p>
+            <p>Precio: $${product.precio}</p>
+            <p>Stock: ${product.stock}</p>
+            <a href="./producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>    
+        </div>
+    `).join('');
+}
+
+
 // Función para mostrar el detalle del producto seleccionado en la página
 function mostrarDetalleProducto(id) {
     const producto = data.find(prod => prod.id === id);  // Busca el producto por su ID
@@ -23,17 +40,7 @@ function mostrarDetalleProducto(id) {
             }
         `;
     } else {
-        // Si no se encuentra el producto, muestra una lista de productos
-        productDetail.innerHTML = data.map(product => `
-            <div class="product-card">
-                <h3>${product.titulo}</h3>
-                <img src="${product.imagen}" alt="${product.titulo}">
-                <p>${product.detalle}</p>
-                <p>Precio: $${product.precio.toFixed(2)}</p>
-                <p>Stock: ${product.stock}</p>
-                <a href="./producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>    
-            </div>
-        `).join('');
+        mostrarProductos();
     }
 }
 
@@ -43,6 +50,8 @@ const prodId = parseInt(urlParams.get('prod'), 10);
 
 if (!isNaN(prodId)) {
     mostrarDetalleProducto(prodId);
+} else {
+    mostrarProductos();  // Si no hay un ID en la URL, muestra todos los productos
 }
 
 // Cart funcitons
@@ -89,66 +98,26 @@ function addItems() {
     const quantityTag = document.querySelector("#quantity");
     quantityTag.innerText = quantity;
     counter.value = "1";
+
+    // 
+    Toastify({
+        text: "Agregaste producto/s al carrito de compras.",
+        style: {
+            background: "#DB5079",
+        }, 
+    }).showToast();
+
+    Swal.fire({
+        text: "¿Estás seguro/a de que querés agregar el producto al carrito?", 
+        confirmButtonText: "Sí",
+        cancelButtonText: "No",
+        showCancelButton: true,
+        showCloseButton: true,
+        confirmButtonColor: "#06f",
+        cancelButtonColor: "#DB5079",
+    }).then(result => {
+        if (result.isConfirmed) {
+            add();
+        }
+    });
 }
-
-
-/*
-// Función para incrementar el contador hasta el máximo del stock
-function increaseItem(stock) {
-    const counter = document.querySelector("#counter");
-    if (counter && Number(counter.value) < stock) {
-        counter.value = Number(counter.value) + 1;
-    }
-}
-
-// Función para decrementar el contador con un mínimo de 1
-function decreaseItem() {
-    const counter = document.querySelector("#counter");
-    if (counter && Number(counter.value) > 1) {
-        counter.value = Number(counter.value) - 1;
-    }
-}
-
-// Función para agregar productos al carrito, actualizar cantidad y decrementar stock
-function addItems(idProduct) {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];  // Obtiene el carrito de localStorage o crea uno nuevo
-    const counter = document.querySelector("#counter");
-    const quantityToAdd = Math.max(1, Number(counter.value));  // Asegura una cantidad mínima de 1
-
-    const producto = data.find(prod => prod.id === idProduct);  // Busca el producto en los datos
-
-    if (!producto || producto.stock < quantityToAdd) {
-        alert("No hay suficiente stock disponible.");
-        return;
-    }
-
-    // Actualiza el stock en el array de productos `data`
-    producto.stock -= quantityToAdd;
-
-    const existingProductIndex = cart.findIndex(item => item.id === idProduct);  // Busca si el producto ya está en el carrito
-
-    if (existingProductIndex >= 0) {
-        // Si el producto ya está en el carrito, actualiza la cantidad
-        const newQuantity = Math.min(cart[existingProductIndex].quantity + quantityToAdd, producto.stock + quantityToAdd);
-        cart[existingProductIndex].quantity = newQuantity;
-    } else {
-        // Si no está en el carrito, agrega el producto completo con la cantidad
-        cart.push({ ...producto, quantity: quantityToAdd });
-    }
-
-    // Guarda el carrito actualizado en localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    // Actualiza el contador de cantidad total de productos en el carrito
-    const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-    localStorage.setItem("quantity", totalQuantity);
-
-    // Muestra la cantidad total en el icono del carrito
-    const quantityTag = document.querySelector("#quantity");
-    if (quantityTag) {
-        quantityTag.innerText = totalQuantity;
-    }
-
-    // Actualiza el stock visualmente en la página
-    mostrarDetalleProducto(idProduct);
-}*/

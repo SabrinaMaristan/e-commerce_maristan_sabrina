@@ -6,7 +6,7 @@ const data = [
         precio: 199.99,
         stock: 10,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg",
-        categoria: "mclaren"
+        categoria: "modernos"
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ const data = [
         precio: 299.99,
         stock: 5,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/2.jpg",
-        categoria: "mercedes"
+        categoria: "modernos"
     },
     {
         id: 3,
@@ -24,7 +24,7 @@ const data = [
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/3.jpg",
-        categoria: "ferrari"
+        categoria: "modernos"
     },
     {
         id: 4,
@@ -33,7 +33,7 @@ const data = [
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/4.jpg",
-        categoria: "mclaren"
+        categoria: "modernos"
     },
     {
         id: 5,
@@ -42,7 +42,7 @@ const data = [
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/5.jpg",
-        categoria: "mercedes"
+        categoria: "vintage"
     },
     {
         id: 6,
@@ -51,7 +51,7 @@ const data = [
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/6.jpg",
-        categoria: "ferrari"
+        categoria: "modernos"
     },
     {
         id: 7,
@@ -60,7 +60,7 @@ const data = [
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/7.jpg",
-        categoria: "mclaren"
+        categoria: "vintage"
     },
     {
         id: 8,
@@ -69,7 +69,7 @@ const data = [
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/8.jpg",
-        categoria: "mercedes"
+        categoria: "modernos"
     },
     {
         id: 9,
@@ -78,6 +78,6 @@ const data = [
         precio: 149.99,
         stock: 15,
         imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/9.jpg",
-        categoria: "ferrari"
+        categoria: "modernos"
     }
 ];
