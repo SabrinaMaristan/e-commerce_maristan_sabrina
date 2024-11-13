@@ -20,8 +20,6 @@ function displayProducts(products) {
     });
   }
   
-  // Cargar todos los productos al inicio
-  displayProducts(data);
   
   // Capturar el input y el botón de búsqueda
   const searchInput = document.getElementById('search-input');
@@ -59,4 +57,16 @@ function displayProducts(products) {
   categoryButtons.forEach(button => {
       button.addEventListener("click", () => filterByCategory(button.dataset.category)); 
   });
+  
+  // Cargar todos los productos al inicio: displayProducts(data);
+  // 12-11
+  //  Cargar todos los productos después de que pasen 3 segundos:
+
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("ok")
+    }, 3000) // 3 segundos
+  })
+
+  promise.then(() => displayProducts(data));
   
