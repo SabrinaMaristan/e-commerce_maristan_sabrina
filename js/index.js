@@ -60,7 +60,7 @@ function displayProducts(products) {
   
   // Cargar todos los productos al inicio: displayProducts(data);
   // 12-11
-  //  Cargar todos los productos después de que pasen 3 segundos:
+  //  Cargar todos los productos después de que pasen 3 segundos: https://github.com/julioavantt/teacher_js_promises
 
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
