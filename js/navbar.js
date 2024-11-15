@@ -52,7 +52,7 @@ let menu = `
 `;
 
 // Inserta el menú en el elemento <header> del HTML
-document.querySelector('header').innerHTML = menu;
+document.querySelector('.header').innerHTML = menu;
 
 // Función para cerrar sesión
 function logout() {

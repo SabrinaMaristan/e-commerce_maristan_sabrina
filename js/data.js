@@ -5,7 +5,7 @@ const data = [
         detalle: "Descripción del producto 1.",
         precio: 199.99,
         stock: 10,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/1.jpg",
+        imagen: `${URL_CARS.imagen}1.jpg`,
         categoria: "modernos"
     },
     {
@@ -14,7 +14,7 @@ const data = [
         detalle: "Descripción del producto 2.",
         precio: 299.99,
         stock: 5,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/2.jpg",
+        imagen: `${URL_CARS.imagen}2.jpg`,
         categoria: "modernos"
     },
     {
@@ -23,7 +23,7 @@ const data = [
         detalle: "Descripción del producto 3.",
         precio: 149.99,
         stock: 15,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/3.jpg",
+        imagen: `${URL_CARS.imagen}3.jpg`,
         categoria: "modernos"
     },
     {
@@ -32,7 +32,7 @@ const data = [
         detalle: "Descripción del producto 4.",
         precio: 149.99,
         stock: 15,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/4.jpg",
+        imagen: `${URL_CARS.imagen}4.jpg`,
         categoria: "modernos"
     },
     {
@@ -41,7 +41,7 @@ const data = [
         detalle: "Descripción del producto 5.",
         precio: 149.99,
         stock: 15,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/5.jpg",
+        imagen: `${URL_CARS.imagen}5.jpg`,
         categoria: "vintage"
     },
     {
@@ -50,7 +50,7 @@ const data = [
         detalle: "Descripción del producto 6.",
         precio: 149.99,
         stock: 15,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/6.jpg",
+        imagen: `${URL_CARS.imagen}6.jpg`,
         categoria: "modernos"
     },
     {
@@ -59,7 +59,7 @@ const data = [
         detalle: "Descripción del producto 7.",
         precio: 149.99,
         stock: 15,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/7.jpg",
+        imagen: `${URL_CARS.imagen}7.jpg`,
         categoria: "vintage"
     },
     {
@@ -68,7 +68,7 @@ const data = [
         detalle: "Descripción del producto 8.",
         precio: 149.99,
         stock: 15,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/8.jpg",
+        imagen: `${URL_CARS.imagen}8.jpg`,
         categoria: "modernos"
     },
     {
@@ -77,7 +77,7 @@ const data = [
         detalle: "Descripción del producto 9.",
         precio: 149.99,
         stock: 15,
-        imagen: "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/9.jpg",
+        imagen: `${URL_CARS.imagen}9.jpg`,
         categoria: "modernos"
     }
 ];
