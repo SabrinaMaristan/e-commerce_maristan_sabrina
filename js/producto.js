@@ -107,7 +107,7 @@ function addItems(id) {
             counter.value = "1";
 
             Toastify({
-                text: "Producto agregado al carrito.",
+                text: "Se agregó el producto al carrito.",
                 style: {
                     background: "#DB5079",
                 }, 
