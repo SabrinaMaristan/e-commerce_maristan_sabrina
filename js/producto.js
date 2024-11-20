@@ -14,10 +14,9 @@ function mostrarProductos() {
     `).join('');
 }
 
-
 // Función para mostrar el detalle del producto seleccionado en la página
 function mostrarDetalleProducto(id) {
-    const producto = data.find(prod => prod.id === id);  // Busca el producto por su ID
+    const producto = data.find(prod => prod.id === id); // Busca el producto por su ID
     const productDetail = document.querySelector('#product-detail');
 
     if (producto) {
@@ -51,62 +50,25 @@ const prodId = parseInt(urlParams.get('prod'), 10);
 if (!isNaN(prodId)) {
     mostrarDetalleProducto(prodId);
 } else {
-    mostrarProductos();  // Si no hay un ID en la URL, muestra todos los productos
+    mostrarProductos(); // Si no hay un ID en la URL, muestra todos los productos
 }
 
-// Cart funcitons
+// Funciones para el carrito
 const counter = document.querySelector("#counter");
 
-function increaseItem() {
-    const idProduct = Number(window.location.search.split("=")[1]);
-    
-    const product = data.find(item => item.id === idProduct);
-
-    if (product.stock > counter.value) {
+function increaseItem(stock) {
+    if (counter.value < stock) {
         counter.value = Number(counter.value) + 1;
     }
 }
 
 function decreaseItem() {
-    if (1 < counter.value) {
+    if (counter.value > 1) {
         counter.value = Number(counter.value) - 1;
     }
 }
 
-function addItems() {
-    let cart = JSON.parse(localStorage.getItem("cart"));
-
-    const idProduct = Number(window.location.search.split("=")[1]);
-    const product = data.find(item => item.id === idProduct);
-    const existeIdCart = cart.some(item => item.product.id === idProduct); // some: true - false
-
-    if (existeIdCart) {
-        cart = cart.map(item => {
-            if (item.product.id === idProduct) {
-                return { item, quantity: item.quantity + Number(counter.value) }
-            } else {
-                return item;
-            }
-        })
-    } else {
-        cart.push({ product: product, quantity: Number(counter.value) });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    let quantity = cart.reduce((acumulado, actual) => acumulado + actual.quantity, 0);
-    localStorage.setItem("quantity", quantity);
-    const quantityTag = document.querySelector("#quantity");
-    quantityTag.innerText = quantity;
-    counter.value = "1";
-
-    // 
-    Toastify({
-        text: "Agregaste producto/s al carrito de compras.",
-        style: {
-            background: "#DB5079",
-        }, 
-    }).showToast();
-
+function addItems(id) {
     Swal.fire({
         text: "¿Estás seguro/a de que querés agregar el producto al carrito?", 
         confirmButtonText: "Sí",
@@ -117,7 +79,46 @@ function addItems() {
         cancelButtonColor: "#DB5079",
     }).then(result => {
         if (result.isConfirmed) {
-            add();
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const product = data.find(item => item.id === id);
+            const existeIdCart = cart.some(item => item.product.id === id);
+
+            if (existeIdCart) {
+                cart = cart.map(item => {
+                    if (item.product.id === id) {
+                        return { ...item, quantity: item.quantity + Number(counter.value) };
+                    } else {
+                        return item;
+                    }
+                });
+            } else {
+                cart.push({ product, quantity: Number(counter.value) });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            let quantity = cart.reduce((acumulado, actual) => acumulado + actual.quantity, 0);
+            localStorage.setItem("quantity", quantity);
+
+            const quantityTag = document.querySelector("#quantity");
+            if (quantityTag) {
+                quantityTag.innerText = quantity;
+            }
+            counter.value = "1";
+
+            Toastify({
+                text: "Producto agregado al carrito.",
+                style: {
+                    background: "#DB5079",
+                }, 
+            }).showToast();
+        } else {
+            Toastify({
+                text: "No se agregó el producto al carrito.",
+                style: {
+                    background: "#333",
+                },
+            }).showToast();
         }
     });
 }

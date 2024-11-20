@@ -87,19 +87,45 @@ function removeItem(id) {
 }
 
 function clearCart() {
-    // Limpiar el localStorage
+    // Limpiar el carrito en el localStorage
     localStorage.setItem("cart", JSON.stringify([]));
 
-    // Actualizar el número de productos en el carrito (cantidad)
-    let quantityTag = document.querySelector("#quantity");
-    quantityTag.innerText = "0"; // O cambiar según cómo estés mostrando la cantidad de productos
+    // Actualizar cantidad en el localStorage
+    localStorage.setItem("quantity", 0);
 
-    // Limpiar el contenido visual del carrito (llamamos la función getCart para vaciar las tarjetas)
-    getCart([]); // Asegúrate de que esta función limpia las tarjetas del carrito
+    // Actualizar la cantidad en la navbar
+    const quantityTag = document.querySelector("#quantity");
+    if (quantityTag) {
+        quantityTag.innerText = "0";
+    }
 
-    // Calcular el total a 0 (llamamos la función total para actualizar el total)
-    total([]); 
+    // Limpiar el contenido visual del carrito
+    getCart([]);
+    total([]);
 }
+
+function comprar() {
+    // Extraer el valor numérico del total
+    const totalElement = document.getElementById("cart-total").innerText;
+    const total = parseFloat(totalElement.replace("$", "").trim()); // Elimina el símbolo "$" y convierte a número
+
+    if (total === 0) { // Verifica si el total es exactamente 0
+        Swal.fire({
+            icon: "warning",
+            title: "Tu carrito está vacío",
+            text: "Por favor, agrega productos antes de realizar la compra."
+        });
+    } else {
+        Swal.fire({
+            icon: "success",
+            title: "Compra realizada",
+            text: `¡Gracias por tu compra! El total es $${total.toFixed(2)}.`,
+        }).then(() => {
+            clearCart(); // Llama a clearCart para vaciar el carrito
+        });
+    }
+}
+
 
 // Inicialización
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
