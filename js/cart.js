@@ -105,27 +105,66 @@ function clearCart() {
 }
 
 function comprar() {
-    // Extraer el valor numérico del total
-    const totalElement = document.getElementById("cart-total").innerText;
-    const total = parseFloat(totalElement.replace("$", "").trim()); // Elimina el símbolo "$" y convierte a número
+    // Obtener el carrito y el email del usuario desde localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const email = localStorage.getItem("email");
 
-    if (total === 0) { // Verifica si el total es exactamente 0
+    // Verificar si el carrito está vacío
+    if (cart.length === 0) {
         Swal.fire({
             icon: "warning",
             title: "Tu carrito está vacío",
-            text: "Por favor, agrega productos antes de realizar la compra."
+            text: "Por favor, agrega productos antes de realizar la compra.",
         });
-    } else {
-        Swal.fire({
-            icon: "success",
-            title: "Compra realizada",
-            text: `¡Gracias por tu compra! El total es $${total.toFixed(2)}.`,
-        }).then(() => {
-            clearCart(); // Llama a clearCart para vaciar el carrito
-        });
+        return;
     }
-}
 
+    //MOCKAPI: https://67367b0eaafa2ef222309fad.mockapi.io/cart
+    // Crear el objeto recurso para enviar al servidor 
+    const recurso = {
+        createdAt: new Date().toISOString(),
+        items: cart,
+        user: email,
+    };
+
+    // Realizar la solicitud POST al API
+    fetch("https://67367b0eaafa2ef222309fad.mockapi.io/cart", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(recurso),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al procesar la compra. Por favor, intenta más tarde.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Mostrar SweetAlert en caso de éxito
+            Swal.fire({
+                icon: "success",
+                title: "¡Compra realizada!",
+                text: `Gracias ${email}, hemos registrado tu orden número ${data.id}.`,
+                confirmButtonText: "Ok",
+                confirmButtonColor: "#ab2415",
+                showCancelButton: false,
+            }).then(() => {
+                clearCart(); // Vaciar el carrito
+            });
+        })
+        .catch(error => {
+            // Manejo de errores con SweetAlert
+            Swal.fire({
+                icon: "error",
+                title: "Error en la compra",
+                text: error.message || "Lo sentimos, hubo un problema con tu compra. Intenta más tarde.",
+                confirmButtonText: "Ok",
+                confirmButtonColor: "#ab2415",
+            });
+        });
+} 
 
 // Inicialización
 let cart = JSON.parse(localStorage.getItem("cart")) || [];

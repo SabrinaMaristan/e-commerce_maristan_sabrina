@@ -70,3 +70,62 @@ function displayProducts(products) {
 
   promise.then(() => displayProducts(data));
   
+
+  document.getElementById('checkoutButton').addEventListener('click', async () => {
+    const apiUrl = 'https://your-mockapi-endpoint.com/orders'; // Sustituye con tu endpoint real
+    const email = 'user@example.com'; // Sustituir con el email del usuario autenticado
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Asumiendo que el carrito está en localStorage
+
+    if (cartItems.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El carrito está vacío.',
+        });
+        return;
+    }
+
+    const orderData = {
+        user: email,
+        items: cartItems,
+        createdAt: new Date().toISOString(),
+    };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al crear la orden');
+        }
+
+        const order = await response.json();
+
+        // SweetAlert con datos del usuario y número de orden
+        Swal.fire({
+            icon: 'success',
+            title: 'Orden creada con éxito',
+            html: `
+                <p>Email: ${email}</p>
+                <p>Número de orden: ${order.id}</p>
+            `,
+        });
+
+        // Vaciar el carrito
+        localStorage.removeItem('cart');
+        // Puedes actualizar la vista del carrito aquí, si es necesario
+    } catch (error) {
+        // SweetAlert para manejar errores
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo completar el checkout. Inténtalo de nuevo más tarde.',
+        });
+        console.error(error);
+    }
+});
